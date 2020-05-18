@@ -58,3 +58,17 @@ def count_sort(arr, maximum=-1):
 
 
     return arr
+
+def insertion_sort(arr):
+    last_sorted_index = 0
+    while last_sorted_index < len(arr) - 1:
+        if arr[last_sorted_index + 1] < arr[last_sorted_index]: # already sorted
+            value = arr[last_sorted_index + 1]
+            for i in range(0, last_sorted_index + 1):
+                if value < arr[i]:
+                    new_value = arr[i]
+                    arr[i] = value
+                    arr[last_sorted_index + 1] = new_value
+                    value = new_value
+        last_sorted_index += 1
+    return arr
