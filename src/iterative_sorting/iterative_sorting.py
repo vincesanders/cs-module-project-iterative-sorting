@@ -20,8 +20,9 @@ def bubble_sort(arr):
     swapped = True
     index = 0
     swaps = 0
+    last_element = len(arr) - 1
     while swapped:
-        if index < len(arr) - 1: # if we're not at the last element
+        if index < last_element: # if we're not at the last element
             # compare item at index with index after
             if arr[index] > arr[index + 1]:
                 # if item at index is larger, swap
@@ -33,6 +34,10 @@ def bubble_sort(arr):
             #increment index
             index += 1
         else: # last index
+            # decrement last element
+            # we know the last element doesn't have to be checked again,
+            # because we know it's the largest
+            last_element -= 1
             # if no swaps, swapped is False 
             if swaps is 0:
                 swapped = False
