@@ -18,9 +18,9 @@ def selection_sort(arr):
 # TO-DO:  implement the Bubble Sort function below
 def bubble_sort(arr):
     swapped = True
+    index = 0
+    swaps = 0
     while swapped:
-        swaps = 0
-        index = 0
         if index < len(arr) - 1: # if we're not at the last element
             # compare item at index with index after
             if arr[index] > arr[index + 1]:
@@ -36,6 +36,9 @@ def bubble_sort(arr):
             # if no swaps, swapped is False 
             if swaps is 0:
                 swapped = False
+            else:
+                index = 0
+                swaps = 0
     return arr
 
 
