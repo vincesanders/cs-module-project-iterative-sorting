@@ -11,7 +11,7 @@ def binary_search(arr, target):
     low = 0
     high = len(arr) - 1
     middle = (len(arr) - 1) // 2
-    while high - low > 1:
+    while high - low > 0:
         if target == arr[middle]:
             return middle
         elif target > arr[middle]:
