@@ -53,10 +53,35 @@ def bubble_sort(arr):
 #Space complexity of bubble and selection sort are O(n), time complexity is (O)n^2 / 2, which is further simplified to O(n)^2
 
 # STRETCH: implement the Count Sort function below
-def count_sort(arr, maximum=-1):
-    # Your code here
+def count_sort(arr, maximum=-1): # currently O(4n+k)
+    # find k(maximum) while creating sorted_array
+    sorted_array = []
+    for i in range(len(arr)): # O(n)
+        sorted_array.append(0)
+        if arr[i] > maximum:
+            maximum = arr[i]
+        elif arr[i] < 0:
+            return "Error, negative numbers not allowed in Count Sort"
+    # make count array with values of 0
+    count = [0 for x in range(maximum + 1)]
+    # count number of occurances of each
+    for i in range(len(arr)): # O(n)
+        count[arr[i]] += 1
+    # get running sum
+    for i in range(len(count)): #O(k)
+        if i > 0:
+            count[i] += count[i - 1]
+    # placement
+    for i in range(len(arr)): # O(n)
+        sorted_array[count[arr[i]] - 1] = arr[i]
+        count[arr[i]] -= 1
+    # copy sorted array to original array.
+    # This step is only necessary if you want to modify the original array.
+    for i in range(len(arr)): # O(n)
+        arr[i] = sorted_array[i]
 
-
+    # if you want to return a sorted copy of the origial array,
+    # you can return sorted_array
     return arr
 
 def insertion_sort(arr):
