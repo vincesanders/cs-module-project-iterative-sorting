@@ -50,6 +50,7 @@ def bubble_sort(arr):
                 swaps = 0
     return arr
 
+#Space complexity of bubble and selection sort are O(n), time complexity is (O)n^2 / 2, which is further simplified to O(n)^2
 
 # STRETCH: implement the Count Sort function below
 def count_sort(arr, maximum=-1):
