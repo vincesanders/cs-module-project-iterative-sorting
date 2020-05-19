@@ -98,7 +98,7 @@ def insertion_sort(arr):
         last_sorted_index += 1
     return arr
 
-def count_sort_ver2(arr): # currently O(4n+k)
+def count_sort_ver2(arr): # currently O(2n+2k)
     # make count array with values of empty array
     count = []
     # count number of occurances of each
