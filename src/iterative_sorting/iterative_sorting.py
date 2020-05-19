@@ -1,3 +1,4 @@
+import random
 # TO-DO: Complete the selection_sort() function below
 def selection_sort(arr):
     # loop through n-1 elements
@@ -79,7 +80,6 @@ def count_sort(arr, maximum=-1): # currently O(4n+k)
     # This step is only necessary if you want to modify the original array.
     for i in range(len(arr)): # O(n)
         arr[i] = sorted_array[i]
-
     # if you want to return a sorted copy of the origial array,
     # you can return sorted_array
     return arr
@@ -97,3 +97,24 @@ def insertion_sort(arr):
                     value = new_value
         last_sorted_index += 1
     return arr
+
+def count_sort_ver2(arr): # currently O(4n+k)
+    # make count array with values of empty array
+    count = []
+    # count number of occurances of each
+    # find k(maximum) while creating sorted_array
+    for i in range(len(arr)): # O(n + k)
+        if arr[i] < 0:
+            return "Error, negative numbers not allowed in Count Sort"
+        if arr[i] > len(count) - 1: # if number being added is out of range
+            difference = arr[i] - len(count)
+            for j in range(difference + 1): # Add difference empty arrays to count
+                count.append([])
+        count[arr[i]].append(arr[i]) # add the arr[i] to the array that corresponds to its value
+    sorted_array = []
+    # get running sum
+    for i in range(len(count)): #O(n)
+        # cycle through count adding all the values within the array at the current index to the sorted array.
+        # This means if there were repeats of the same value, they would be added together.
+        sorted_array.extend(count[i]) # O(k)
+    return sorted_array
